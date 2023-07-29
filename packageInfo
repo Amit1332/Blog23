@@ -10,4 +10,15 @@
 
  4 . winston     -   winston is designed to be a simple and universal logging library with support for multiple transports. and Winston helps you profile a block of code and measure the time the code takes to be successfully executed.
 
+ 5 . helmet   -   Helmet helps secure Express apps by setting HTTP response headers. Get started. 
+
+ 6 . cors   -  CORS stands for Cross-Origin Resource Sharing . It allows us to relax the security applied to an API ,  CORS is a browser security feature that restricts cross-origin HTTP requests with other servers and specifies which domains access your resource
+
+ 7 . Xss-clean -   The "xss-clean" module, on the other hand, prevents XSS attacks by sanitizing user input.
+
+ 8 . compression   - this package is used to compress gzip compression , ompression in Node.js and Express decreases the downloadable amount of data that's served to users. 
+
+ 9 . express-fileupload - The express-fileupload library is a middleware for Express framework that provides you with an easy way to handle file upload using the Express framework.
+
+ 10 . morgan  -  Morgan is a logging tool (middleware) that can be used in HTTP servers implemented using Express & Node. js. It can be used to log requests, errors, and more to the console
  
