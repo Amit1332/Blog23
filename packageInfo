@@ -1,0 +1,13 @@
+1 . eslint   - ESLint is a static code analysis tool that checks your JavaScript code for common problems,  such as syntax errors, formatting issues, code style violations, and potential bugs.
+ In this article, we will explore some of the benefits of using ESLint for code quality and consistency.
+
+
+ 2 .cross-env   -  cross-env is used to set environment variables inline when running node commands.        cross-env NODE_ENV=production webpack --config build/webpack.config.js.
+
+
+ 3 .joi -    The most powerful schema description language and data validator for JavaScript.
+
+
+ 4 . winston     -   winston is designed to be a simple and universal logging library with support for multiple transports. and Winston helps you profile a block of code and measure the time the code takes to be successfully executed.
+
+ 
