@@ -8,6 +8,7 @@ const { config } = require('dotenv');
 const morgan = require('./utils/morgan');
 const multer = require('multer');
 const bookSchema = require('./models/bookSchema');
+const path =require('path');
 const app = express();
 
 if(config.env !== 'test'){
@@ -43,32 +44,67 @@ app.use(xss());
 
 
 const Storage =multer.diskStorage({
-    destination:'uploads',
+    destination:'./images',
     filename:(req,file,cb)=>{
-        cb(null,file.originalname);
+        cb(null,`${Date.now()}--${file.originalname}`);
     }
 });
 
+const checkFileType = function (file, cb) {
+    //Allowed file extensions
+    const fileTypes = /jpeg|jpg|png|gif|svg/;
+  
+    //check extension names
+    const extName = fileTypes.test(path.extname(file.originalname).toLowerCase());
+  
+    const mimeType = fileTypes.test(file.mimetype);
+  
+    if (mimeType && extName) {
+        return cb(null, true);
+    } else {
+        cb('Error: You can Only Upload Images!!');
+    }
+};
 const upload = multer({
-    storage:Storage
-}).single('testImage');
+    storage:Storage,
+    limits: { fileSize: 10000000 },
+    fileFilter: (req, file, cb) => {
+        checkFileType(file, cb);
+    }
+});
 
 
-app.post('/upload', (req,res)=>{
-    upload(req,res, (err)=>{
-        if(err){
-            console.log(err);
-        }
-        else{
-            const newImage = new bookSchema({
-                name:req.body.name,
-                image:{
-                    data:req.file.filename,
+app.post('/upload', upload.single('testImage'), (req,res)=>{
+    if(!req.file){
+        console.log('No Exist');
+    }
+    else{
+        const newImage = new bookSchema({
+            name:req.body.name,
+            image:{
+                data:req.file.filename,
+                contentType:'image/png'
+            }
+        });
+        newImage.save().then(()=> res.send('successful upload image')).catch((err)=>console.log(err));
+    }
+});
+
+app.post('/multiple', upload.array('images', 5), (req, res) => {
+    if (req.files) {
+        const imageColl = new bookSchema({
+            name:req.body.name,
+            images:[
+                {
+                    data:req.files,
                     contentType:'image/png'
                 }
-            });
-            newImage.save().then(()=> res.send('successful upload image')).catch((err)=>console.log(err));
-        }
-    });
+            ]
+                
+        });
+        imageColl.save().then(()=> res.send('successful upload image')).catch((err)=>console.log(err));
+    } else {
+        res.status(400).send('Please upload a valid images');
+    }
 });
 module.exports =app;
