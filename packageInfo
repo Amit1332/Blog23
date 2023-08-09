@@ -21,4 +21,7 @@
  9 . express-fileupload - The express-fileupload library is a middleware for Express framework that provides you with an easy way to handle file upload using the Express framework.
 
  10 . morgan  -  Morgan is a logging tool (middleware) that can be used in HTTP servers implemented using Express & Node. js. It can be used to log requests, errors, and more to the console
- 
+
+
+ 11 - express-rate-limit   -  Express Rate Limit: Rate limiting prevents the same IP address from making too many requests that will help us prevent attacks like brute force. 
+ The express-rate-limit work as a middleware, it means that we can use it in a single route, the entire app or a group of sub-routes.

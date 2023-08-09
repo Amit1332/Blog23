@@ -1,7 +1,7 @@
 {
   "name": "blog",
   "version": "1.0.0",
-  "description": "blog post",
+  "description": "A blog post Application using MERN and sql",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -10,6 +10,10 @@
     "lint:check": "eslint .",
     "lint:fix": "eslint --fix ."
   },
+  "keywords": [
+    "NodeJS",
+    "Express"
+  ],
   "author": "amitesh singh",
   "license": "ISC",
   "dependencies": {
