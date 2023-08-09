@@ -1,5 +1,6 @@
 const app = require('./app');
 const config = require('./config/config');
+const databaseConn = require('./config/db');
 const logger = require('./utils/logger');
 
 
@@ -10,6 +11,8 @@ let server = app.listen(config.port ,()=>{
     logger.debug(`Website is under ${config.env}`);
 });
 
+
+databaseConn();
 const exitHandler = ()=>{
     if(server){
         server.close(()=>{
